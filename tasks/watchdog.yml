@@ -1,0 +1,13 @@
+- name: Watchdog runtime
+  ini_file:
+    dest: "/etc/systemd/system.conf"
+    section: "Manager"
+    option: "RuntimeWatchdogSec"
+    value:  "14"
+
+- name: Watchdog shutdown
+  ini_file:
+    dest: "/etc/systemd/system.conf"
+    section: "Manager"
+    option: "ShutdownWatchdogSec"
+    value:  "2min"

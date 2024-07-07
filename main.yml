@@ -50,3 +50,6 @@
     - name: Set up Starlink Monitoring.
       ansible.builtin.import_tasks: tasks/starlink.yml
       when: starlink_enable
+
+    - name: Configure watchdog
+      ansible.builtin.import_tasks: tasks/watchdog.yml
