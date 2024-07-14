@@ -1,0 +1,13 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+BindsTo=dev-video0.device
+After=dev-video0.device
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/home/deets/ir-camera/tc001v4.2.py --device 0
+WorkingDirectory=/home/deets/ir-camera
+Environment="XDG_RUNTIME_DIR=/run/user/1000"

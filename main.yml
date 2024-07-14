@@ -53,3 +53,6 @@
 
     - name: Configure watchdog
       ansible.builtin.import_tasks: tasks/watchdog.yml
+
+    - name: Configure IR camera service
+      ansible.builtin.import_tasks: tasks/ir-camera/ir-camera.yml

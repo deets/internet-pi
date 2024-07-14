@@ -1,0 +1,31 @@
+---
+- name: Copy IR camera rules to udev rules
+  ansible.builtin.copy:
+    src: tasks/ir-camera/60-tc001.rules
+    dest: /etc/udev/rules.d/
+    mode: 0644
+  become: true
+  tags:
+    - ir-camera
+- name: Copy IR camera script
+  ansible.builtin.copy:
+    src: tasks/ir-camera/tc001v4.2.py
+    dest: /home/deets/ir-camera
+    mode: 0755
+  become: false
+  tags:
+    - ir-camera
+- name: Copy IR service script
+  ansible.builtin.copy:
+    src: tasks/ir-camera/ir-camera.service
+    dest: /home/deets/.config/systemd/user/
+    mode: 0644
+  become: false
+  tags:
+    - ir-camera
+- name: Install python opencv
+  ansible.builtin.apt:
+    name: python3-opencv
+    state: latest  # noqa package-latest
+  tags:
+    - ir-camera
